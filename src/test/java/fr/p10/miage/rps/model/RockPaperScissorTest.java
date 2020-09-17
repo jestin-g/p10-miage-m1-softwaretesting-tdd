@@ -7,6 +7,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
 
 public class RockPaperScissorTest {
 
@@ -25,16 +26,22 @@ public class RockPaperScissorTest {
     @Test(dataProvider="getDataPlayWin")
     public void testWinPlay(PlayEnum p1, PlayEnum p2) {
         assertEquals(rps.play(p1, p2), ResultEnum.WIN);
+        assertNotEquals(rps.play(p1, p2), ResultEnum.TIE);
+        assertNotEquals(rps.play(p1, p2), ResultEnum.LOOSE);
     }
 
     @Test(dataProvider="getDataPlayTie")
     public void testTiePlay(PlayEnum p1, PlayEnum p2) {
         assertEquals(rps.play(p1, p2), ResultEnum.TIE);
+        assertNotEquals(rps.play(p1, p2), ResultEnum.WIN);
+        assertNotEquals(rps.play(p1, p2), ResultEnum.LOOSE);
     }
 
     @Test(dataProvider="getDataPlayLoose")
     public void testLoosePlay(PlayEnum p1, PlayEnum p2) {
         assertEquals(rps.play(p1, p2), ResultEnum.LOOSE);
+        assertNotEquals(rps.play(p1, p2), ResultEnum.TIE);
+        assertNotEquals(rps.play(p1, p2), ResultEnum.WIN);
     }
 
     @DataProvider
