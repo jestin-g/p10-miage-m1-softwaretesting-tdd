@@ -1,14 +1,14 @@
 package fr.p10.miage.rps.model;
 
-import java.util.List;
+import java.util.LinkedList;
 
 public class Player {
     private String name;
     private int score;
-    private List<PlayEnum> moves;
+    private LinkedList<PlayEnum> moves = new LinkedList<>();
     private int movesCursor = 0;
 
-    public Player(String name, List<PlayEnum> moves) {
+    public Player(String name, LinkedList<PlayEnum> moves) {
         this.name = name;
         this.score = 0;
         this.moves = moves;
@@ -34,7 +34,11 @@ public class Player {
     }
 
     public PlayEnum getNextMove() {
-        return this.moves.get(++this.movesCursor);
+        try {
+            return this.moves.get(++this.movesCursor);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public void setScore(int score) {
