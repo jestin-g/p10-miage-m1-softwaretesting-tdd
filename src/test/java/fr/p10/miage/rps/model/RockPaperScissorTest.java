@@ -23,8 +23,14 @@ public class RockPaperScissorTest {
 
     @Parameters({"papier", "pierre"})
     @Test()
-    public void testWinPlay1(String p1, String p2) {
+    public void testWinPlay(String p1, String p2) {
         assertEquals(rps.play(PlayEnum.valueOf(p1), PlayEnum.valueOf(p2)), ResultEnum.WIN);
+    }
+
+    @Parameters({"pierre", "pierre"})
+    @Test()
+    public void testTiePlay(String p1, String p2) {
+        assertEquals(rps.play(PlayEnum.valueOf(p1), PlayEnum.valueOf(p2)), ResultEnum.TIE);
     }
 
 }
