@@ -19,4 +19,8 @@ public class RockPaperScissor {
         }
         return ResultEnum.LOOSE;
     }
+
+    ResultEnum play(Player p1, Player p2) {
+        return ResultEnum.LOOSE;
+    }
 }
