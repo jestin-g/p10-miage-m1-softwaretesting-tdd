@@ -13,10 +13,6 @@ import static org.testng.Assert.assertNotEquals;
 public class RockPaperScissorTest {
 
     RockPaperScissor rps;
-    private LinkedList<PlayEnum> movesP1;
-    private LinkedList<PlayEnum> movesP2;
-    private LinkedList<PlayEnum> movesP3;
-    private LinkedList<PlayEnum> movesP4;
     private Player p1;
     private Player p2;
     private Player p3;
@@ -26,29 +22,29 @@ public class RockPaperScissorTest {
     public void setupClass() {
         rps = new RockPaperScissor();
 
-        movesP1 = new LinkedList<>();
+        LinkedList<PlayEnum> movesP1 = new LinkedList<>();
         movesP1.add(PlayEnum.ROCK);
         movesP1.add(PlayEnum.ROCK);
         movesP1.add(PlayEnum.PAPER);
         movesP1.add(PlayEnum.SCISSORS);
 
-        movesP2 = new LinkedList<>();
+        LinkedList<PlayEnum> movesP2 = new LinkedList<>();
         movesP2.add(PlayEnum.SCISSORS);
         movesP2.add(PlayEnum.SCISSORS);
-        movesP1.add(PlayEnum.PAPER);
+        movesP2.add(PlayEnum.PAPER);
+        movesP2.add(PlayEnum.ROCK);
+
+        LinkedList<PlayEnum> movesP3 = new LinkedList<>();
+        movesP3.add(PlayEnum.ROCK);
+        movesP3.add(PlayEnum.ROCK);
+        movesP3.add(PlayEnum.PAPER);
         movesP3.add(PlayEnum.ROCK);
 
-        movesP3 = new LinkedList<>();
-        movesP3.add(PlayEnum.ROCK);
-        movesP3.add(PlayEnum.ROCK);
-        movesP1.add(PlayEnum.PAPER);
-        movesP3.add(PlayEnum.ROCK);
-
-        movesP4 = new LinkedList<>();
+        LinkedList<PlayEnum> movesP4 = new LinkedList<>();
         movesP4.add(PlayEnum.PAPER);
         movesP4.add(PlayEnum.PAPER);
         movesP4.add(PlayEnum.PAPER);
-        movesP3.add(PlayEnum.ROCK);
+        movesP4.add(PlayEnum.ROCK);
 
         p1 = new Player("Player 1", movesP1);
         p2 = new Player("Player 2", movesP2);
@@ -59,10 +55,6 @@ public class RockPaperScissorTest {
     @AfterClass
     public void tearDownClass() {
         rps = null;
-        movesP1 = null;
-        movesP2 = null;
-        movesP3 = null;
-        movesP4 = null;
         p1 = null;
         p2 = null;
         p3 = null;
