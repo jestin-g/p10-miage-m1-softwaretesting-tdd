@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RockPaperScissorTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TD_TDD$RockPaperScissorTest.exec</a> &gt; <a href="index.source.html" class="el_package">fr.p10.miage.rps.model</a> &gt; <span class="el_source">RockPaperScissorTest.java</span></div><h1>RockPaperScissorTest.java</h1><pre class="source lang-java linenums">package fr.p10.miage.rps.model;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
+
+<span class="fc" id="L12">public class RockPaperScissorTest {</span>
+
+    RockPaperScissor rps;
+
+    @BeforeMethod
+    public void setUp() {
+<span class="fc" id="L18">        rps = new RockPaperScissor();</span>
+<span class="fc" id="L19">    }</span>
+
+    @AfterMethod
+    public void tearDown() {
+<span class="fc" id="L23">        rps = null;</span>
+<span class="fc" id="L24">    }</span>
+
+    @Test(dataProvider=&quot;getDataPlayWin&quot;)
+    public void testWinPlay(PlayEnum p1, PlayEnum p2) {
+<span class="fc" id="L28">        assertEquals(rps.play(p1, p2), ResultEnum.WIN);</span>
+<span class="fc" id="L29">        assertNotEquals(rps.play(p1, p2), ResultEnum.TIE);</span>
+<span class="fc" id="L30">        assertNotEquals(rps.play(p1, p2), ResultEnum.LOOSE);</span>
+<span class="fc" id="L31">    }</span>
+
+    @Test(dataProvider=&quot;getDataPlayTie&quot;)
+    public void testTiePlay(PlayEnum p1, PlayEnum p2) {
+<span class="fc" id="L35">        assertEquals(rps.play(p1, p2), ResultEnum.TIE);</span>
+<span class="fc" id="L36">        assertNotEquals(rps.play(p1, p2), ResultEnum.WIN);</span>
+<span class="fc" id="L37">        assertNotEquals(rps.play(p1, p2), ResultEnum.LOOSE);</span>
+<span class="fc" id="L38">    }</span>
+
+    @Test(dataProvider=&quot;getDataPlayLoose&quot;)
+    public void testLoosePlay(PlayEnum p1, PlayEnum p2) {
+<span class="fc" id="L42">        assertEquals(rps.play(p1, p2), ResultEnum.LOOSE);</span>
+<span class="fc" id="L43">        assertNotEquals(rps.play(p1, p2), ResultEnum.TIE);</span>
+<span class="fc" id="L44">        assertNotEquals(rps.play(p1, p2), ResultEnum.WIN);</span>
+<span class="fc" id="L45">    }</span>
+
+    @DataProvider
+    public Object[][] getDataPlayWin() {
+<span class="fc" id="L49">        return new Object[][]{</span>
+                {PlayEnum.PAPER, PlayEnum.ROCK},
+                {PlayEnum.ROCK, PlayEnum.SCISSORS},
+                {PlayEnum.SCISSORS, PlayEnum.PAPER}
+        };
+    }
+
+    @DataProvider
+    public Object[][] getDataPlayTie() {
+<span class="fc" id="L58">        return new Object[][]{</span>
+                {PlayEnum.PAPER, PlayEnum.PAPER},
+                {PlayEnum.ROCK, PlayEnum.ROCK},
+                {PlayEnum.SCISSORS, PlayEnum.SCISSORS}
+        };
+    }
+
+    @DataProvider
+    public Object[][] getDataPlayLoose() {
+<span class="fc" id="L67">        return new Object[][]{</span>
+                {PlayEnum.PAPER, PlayEnum.SCISSORS},
+                {PlayEnum.ROCK, PlayEnum.PAPER},
+                {PlayEnum.SCISSORS, PlayEnum.ROCK}
+        };
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

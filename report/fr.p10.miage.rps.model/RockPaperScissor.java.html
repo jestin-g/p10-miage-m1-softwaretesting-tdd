@@ -8,14 +8,14 @@ public class RockPaperScissor {
 <span class="fc bfc" id="L8" title="All 2 branches covered.">        if (p1 == p2) {</span>
 <span class="fc" id="L9">            return ResultEnum.TIE;</span>
         }
-<span class="pc bpc" id="L11" title="1 of 4 branches missed.">        if ((p1 == PlayEnum.PAPER) &amp;&amp; (p2 == PlayEnum.ROCK)) {</span>
+<span class="fc bfc" id="L11" title="All 4 branches covered.">        if ((p1 == PlayEnum.PAPER) &amp;&amp; (p2 == PlayEnum.ROCK)) {</span>
 <span class="fc" id="L12">            return ResultEnum.WIN;</span>
         }
-<span class="pc bpc" id="L14" title="3 of 4 branches missed.">        if ((p1 == PlayEnum.ROCK) &amp;&amp; (p2 == PlayEnum.SCISSORS)) {</span>
-<span class="nc" id="L15">            return ResultEnum.WIN;</span>
+<span class="fc bfc" id="L14" title="All 4 branches covered.">        if ((p1 == PlayEnum.ROCK) &amp;&amp; (p2 == PlayEnum.SCISSORS)) {</span>
+<span class="fc" id="L15">            return ResultEnum.WIN;</span>
         }
-<span class="pc bpc" id="L17" title="2 of 4 branches missed.">        if ((p1 == PlayEnum.SCISSORS) &amp;&amp; (p2 == PlayEnum.PAPER)) {</span>
-<span class="nc" id="L18">            return ResultEnum.WIN;</span>
+<span class="fc bfc" id="L17" title="All 4 branches covered.">        if ((p1 == PlayEnum.SCISSORS) &amp;&amp; (p2 == PlayEnum.PAPER)) {</span>
+<span class="fc" id="L18">            return ResultEnum.WIN;</span>
         }
 <span class="fc" id="L20">        return ResultEnum.LOOSE;</span>
     }
