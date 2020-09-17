@@ -1,9 +1,8 @@
 package fr.p10.miage.rps.model;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -13,31 +12,31 @@ public class RockPaperScissorTest {
 
     RockPaperScissor rps;
 
-    @BeforeMethod
-    public void setUp() {
+    @BeforeClass
+    public void setupClass() {
         rps = new RockPaperScissor();
     }
 
-    @AfterMethod
-    public void tearDown() {
+    @AfterClass
+    public void tearDownClass() {
         rps = null;
     }
 
-    @Test(dataProvider="getDataPlayWin")
+    @Test(dataProvider = "getDataPlayWin")
     public void testWinPlay(PlayEnum p1, PlayEnum p2) {
         assertEquals(rps.play(p1, p2), ResultEnum.WIN);
         assertNotEquals(rps.play(p1, p2), ResultEnum.TIE);
         assertNotEquals(rps.play(p1, p2), ResultEnum.LOOSE);
     }
 
-    @Test(dataProvider="getDataPlayTie")
+    @Test(dataProvider = "getDataPlayTie")
     public void testTiePlay(PlayEnum p1, PlayEnum p2) {
         assertEquals(rps.play(p1, p2), ResultEnum.TIE);
         assertNotEquals(rps.play(p1, p2), ResultEnum.WIN);
         assertNotEquals(rps.play(p1, p2), ResultEnum.LOOSE);
     }
 
-    @Test(dataProvider="getDataPlayLoose")
+    @Test(dataProvider = "getDataPlayLoose")
     public void testLoosePlay(PlayEnum p1, PlayEnum p2) {
         assertEquals(rps.play(p1, p2), ResultEnum.LOOSE);
         assertNotEquals(rps.play(p1, p2), ResultEnum.TIE);
