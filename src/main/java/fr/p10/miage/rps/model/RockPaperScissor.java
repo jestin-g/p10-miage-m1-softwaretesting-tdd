@@ -8,6 +8,15 @@ public class RockPaperScissor {
         if (p1 == p2) {
             return ResultEnum.TIE;
         }
-        return ResultEnum.WIN;
+        if ((p1 == PlayEnum.PAPER) && (p2 == PlayEnum.ROCK)) {
+            return ResultEnum.WIN;
+        }
+        if ((p1 == PlayEnum.ROCK) && (p2 == PlayEnum.SCISSORS)) {
+            return ResultEnum.WIN;
+        }
+        if ((p1 == PlayEnum.SCISSORS) && (p2 == PlayEnum.PAPER)) {
+            return ResultEnum.WIN;
+        }
+        return ResultEnum.LOOSE;
     }
 }

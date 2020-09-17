@@ -33,4 +33,10 @@ public class RockPaperScissorTest {
         assertEquals(rps.play(PlayEnum.valueOf(p1), PlayEnum.valueOf(p2)), ResultEnum.TIE);
     }
 
+    @Parameters({"ciseaux", "pierre"})
+    @Test()
+    public void testLoosePlay(String p1, String p2) {
+        assertEquals(rps.play(PlayEnum.valueOf(p1), PlayEnum.valueOf(p2)), ResultEnum.LOOSE);
+    }
+
 }
