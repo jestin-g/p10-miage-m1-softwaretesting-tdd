@@ -5,6 +5,6 @@ public class RockPaperScissor {
     }
 
     ResultEnum play(PlayEnum p1, PlayEnum p2) {
-        return ResultEnum.LOOSE;
+        return ResultEnum.WIN;
     }
 }
