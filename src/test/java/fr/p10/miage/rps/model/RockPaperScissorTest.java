@@ -71,26 +71,26 @@ public class RockPaperScissorTest {
         assertEquals(rps.game(p1, p3), ResultEnum.TIE);
     }
 
-    @Test(enabled = false)
+    @Test
     public void testPlayerLoose() {
         assertEquals(rps.game(p1, p4), ResultEnum.LOOSE);
     }
 
-    @Test(dataProvider = "getDataPlayWin", enabled = false)
+    @Test(dataProvider = "getDataPlayWin")
     public void testWinPlay(PlayEnum pe1, PlayEnum pe2) {
         assertEquals(rps.play(pe1, pe2), ResultEnum.WIN);
         assertNotEquals(rps.play(pe1, pe2), ResultEnum.TIE);
         assertNotEquals(rps.play(pe1, pe2), ResultEnum.LOOSE);
     }
 
-    @Test(dataProvider = "getDataPlayTie", enabled = false)
+    @Test(dataProvider = "getDataPlayTie")
     public void testTiePlay(PlayEnum pe1, PlayEnum pe2) {
         assertEquals(rps.play(pe1, pe2), ResultEnum.TIE);
         assertNotEquals(rps.play(pe1, pe2), ResultEnum.WIN);
         assertNotEquals(rps.play(pe1, pe2), ResultEnum.LOOSE);
     }
 
-    @Test(dataProvider = "getDataPlayLoose", enabled = false)
+    @Test(dataProvider = "getDataPlayLoose")
     public void testLoosePlay(PlayEnum pe1, PlayEnum pe2) {
         assertEquals(rps.play(pe1, pe2), ResultEnum.LOOSE);
         assertNotEquals(rps.play(pe1, pe2), ResultEnum.TIE);
