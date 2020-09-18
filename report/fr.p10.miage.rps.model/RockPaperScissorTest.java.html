@@ -3,50 +3,103 @@
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.util.LinkedList;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
-<span class="fc" id="L12">public class RockPaperScissorTest {</span>
+<span class="fc" id="L13">public class RockPaperScissorTest {</span>
 
     RockPaperScissor rps;
+    private Player p1;
+    private Player p2;
+    private Player p3;
+    private Player p4;
 
     @BeforeMethod
-    public void setUp() {
-<span class="fc" id="L18">        rps = new RockPaperScissor();</span>
-<span class="fc" id="L19">    }</span>
+    public void setupMethod() {
+<span class="fc" id="L23">        rps = new RockPaperScissor();</span>
+
+<span class="fc" id="L25">        LinkedList&lt;PlayEnum&gt; movesP1 = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L26">        movesP1.add(PlayEnum.ROCK);</span>
+<span class="fc" id="L27">        movesP1.add(PlayEnum.ROCK);</span>
+<span class="fc" id="L28">        movesP1.add(PlayEnum.PAPER);</span>
+<span class="fc" id="L29">        movesP1.add(PlayEnum.SCISSORS);</span>
+
+<span class="fc" id="L31">        LinkedList&lt;PlayEnum&gt; movesP2 = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L32">        movesP2.add(PlayEnum.SCISSORS);</span>
+<span class="fc" id="L33">        movesP2.add(PlayEnum.SCISSORS);</span>
+<span class="fc" id="L34">        movesP2.add(PlayEnum.PAPER);</span>
+<span class="fc" id="L35">        movesP2.add(PlayEnum.ROCK);</span>
+
+<span class="fc" id="L37">        LinkedList&lt;PlayEnum&gt; movesP3 = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L38">        movesP3.add(PlayEnum.ROCK);</span>
+<span class="fc" id="L39">        movesP3.add(PlayEnum.ROCK);</span>
+<span class="fc" id="L40">        movesP3.add(PlayEnum.PAPER);</span>
+<span class="fc" id="L41">        movesP1.add(PlayEnum.SCISSORS);</span>
+
+<span class="fc" id="L43">        LinkedList&lt;PlayEnum&gt; movesP4 = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L44">        movesP4.add(PlayEnum.PAPER);</span>
+<span class="fc" id="L45">        movesP4.add(PlayEnum.PAPER);</span>
+<span class="fc" id="L46">        movesP4.add(PlayEnum.PAPER);</span>
+<span class="fc" id="L47">        movesP4.add(PlayEnum.ROCK);</span>
+
+<span class="fc" id="L49">        p1 = new Player(&quot;Player 1&quot;, movesP1);</span>
+<span class="fc" id="L50">        p2 = new Player(&quot;Player 2&quot;, movesP2);</span>
+<span class="fc" id="L51">        p3 = new Player(&quot;Player 3&quot;, movesP3);</span>
+<span class="fc" id="L52">        p4 = new Player(&quot;Player 4&quot;, movesP4);</span>
+<span class="fc" id="L53">    }</span>
 
     @AfterMethod
-    public void tearDown() {
-<span class="fc" id="L23">        rps = null;</span>
-<span class="fc" id="L24">    }</span>
+    public void tearDownMethod() {
+<span class="fc" id="L57">        rps = null;</span>
+<span class="fc" id="L58">        p1 = null;</span>
+<span class="fc" id="L59">        p2 = null;</span>
+<span class="fc" id="L60">        p3 = null;</span>
+<span class="fc" id="L61">        p4 = null;</span>
+<span class="fc" id="L62">    }</span>
 
-    @Test(dataProvider=&quot;getDataPlayWin&quot;)
-    public void testWinPlay(PlayEnum p1, PlayEnum p2) {
-<span class="fc" id="L28">        assertEquals(rps.play(p1, p2), ResultEnum.WIN);</span>
-<span class="fc" id="L29">        assertNotEquals(rps.play(p1, p2), ResultEnum.TIE);</span>
-<span class="fc" id="L30">        assertNotEquals(rps.play(p1, p2), ResultEnum.LOOSE);</span>
-<span class="fc" id="L31">    }</span>
+    @Test
+    public void testPlayerWin() {
+<span class="fc" id="L66">        assertEquals(rps.game(p1, p2), ResultEnum.WIN);</span>
+<span class="fc" id="L67">    }</span>
 
-    @Test(dataProvider=&quot;getDataPlayTie&quot;)
-    public void testTiePlay(PlayEnum p1, PlayEnum p2) {
-<span class="fc" id="L35">        assertEquals(rps.play(p1, p2), ResultEnum.TIE);</span>
-<span class="fc" id="L36">        assertNotEquals(rps.play(p1, p2), ResultEnum.WIN);</span>
-<span class="fc" id="L37">        assertNotEquals(rps.play(p1, p2), ResultEnum.LOOSE);</span>
-<span class="fc" id="L38">    }</span>
+    @Test
+    public void testPlayerTie() {
+<span class="fc" id="L71">        assertEquals(rps.game(p1, p3), ResultEnum.TIE);</span>
+<span class="fc" id="L72">    }</span>
 
-    @Test(dataProvider=&quot;getDataPlayLoose&quot;)
-    public void testLoosePlay(PlayEnum p1, PlayEnum p2) {
-<span class="fc" id="L42">        assertEquals(rps.play(p1, p2), ResultEnum.LOOSE);</span>
-<span class="fc" id="L43">        assertNotEquals(rps.play(p1, p2), ResultEnum.TIE);</span>
-<span class="fc" id="L44">        assertNotEquals(rps.play(p1, p2), ResultEnum.WIN);</span>
-<span class="fc" id="L45">    }</span>
+    @Test
+    public void testPlayerLoose() {
+<span class="fc" id="L76">        assertEquals(rps.game(p1, p4), ResultEnum.LOOSE);</span>
+<span class="fc" id="L77">    }</span>
+
+    @Test(dataProvider = &quot;getDataPlayWin&quot;)
+    public void testWinPlay(PlayEnum pe1, PlayEnum pe2) {
+<span class="fc" id="L81">        assertEquals(rps.play(pe1, pe2), ResultEnum.WIN);</span>
+<span class="fc" id="L82">        assertNotEquals(rps.play(pe1, pe2), ResultEnum.TIE);</span>
+<span class="fc" id="L83">        assertNotEquals(rps.play(pe1, pe2), ResultEnum.LOOSE);</span>
+<span class="fc" id="L84">    }</span>
+
+    @Test(dataProvider = &quot;getDataPlayTie&quot;)
+    public void testTiePlay(PlayEnum pe1, PlayEnum pe2) {
+<span class="fc" id="L88">        assertEquals(rps.play(pe1, pe2), ResultEnum.TIE);</span>
+<span class="fc" id="L89">        assertNotEquals(rps.play(pe1, pe2), ResultEnum.WIN);</span>
+<span class="fc" id="L90">        assertNotEquals(rps.play(pe1, pe2), ResultEnum.LOOSE);</span>
+<span class="fc" id="L91">    }</span>
+
+    @Test(dataProvider = &quot;getDataPlayLoose&quot;)
+    public void testLoosePlay(PlayEnum pe1, PlayEnum pe2) {
+<span class="fc" id="L95">        assertEquals(rps.play(pe1, pe2), ResultEnum.LOOSE);</span>
+<span class="fc" id="L96">        assertNotEquals(rps.play(pe1, pe2), ResultEnum.TIE);</span>
+<span class="fc" id="L97">        assertNotEquals(rps.play(pe1, pe2), ResultEnum.WIN);</span>
+<span class="fc" id="L98">    }</span>
 
     @DataProvider
     public Object[][] getDataPlayWin() {
-<span class="fc" id="L49">        return new Object[][]{</span>
+<span class="fc" id="L102">        return new Object[][]{</span>
                 {PlayEnum.PAPER, PlayEnum.ROCK},
                 {PlayEnum.ROCK, PlayEnum.SCISSORS},
                 {PlayEnum.SCISSORS, PlayEnum.PAPER}
@@ -55,7 +108,7 @@ import static org.testng.Assert.assertNotEquals;
 
     @DataProvider
     public Object[][] getDataPlayTie() {
-<span class="fc" id="L58">        return new Object[][]{</span>
+<span class="fc" id="L111">        return new Object[][]{</span>
                 {PlayEnum.PAPER, PlayEnum.PAPER},
                 {PlayEnum.ROCK, PlayEnum.ROCK},
                 {PlayEnum.SCISSORS, PlayEnum.SCISSORS}
@@ -64,7 +117,7 @@ import static org.testng.Assert.assertNotEquals;
 
     @DataProvider
     public Object[][] getDataPlayLoose() {
-<span class="fc" id="L67">        return new Object[][]{</span>
+<span class="fc" id="L120">        return new Object[][]{</span>
                 {PlayEnum.PAPER, PlayEnum.SCISSORS},
                 {PlayEnum.ROCK, PlayEnum.PAPER},
                 {PlayEnum.SCISSORS, PlayEnum.ROCK}

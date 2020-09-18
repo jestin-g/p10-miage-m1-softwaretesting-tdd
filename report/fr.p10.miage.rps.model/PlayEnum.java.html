@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlayEnum.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TD_TDD$RockPaperScissorTest.exec</a> &gt; <a href="index.source.html" class="el_package">fr.p10.miage.rps.model</a> &gt; <span class="el_source">PlayEnum.java</span></div><h1>PlayEnum.java</h1><pre class="source lang-java linenums">package fr.p10.miage.rps.model;
 
-<span class="fc" id="L3">public enum PlayEnum {</span>
-<span class="fc" id="L4">    ROCK,</span>
-<span class="fc" id="L5">    PAPER,</span>
-<span class="fc" id="L6">    SCISSORS</span>
+import java.util.List;
+import java.util.Random;
+
+<span class="fc" id="L6">public enum PlayEnum {</span>
+<span class="fc" id="L7">    ROCK,</span>
+<span class="fc" id="L8">    PAPER,</span>
+<span class="fc" id="L9">    SCISSORS;</span>
+
+<span class="fc" id="L11">    private static final List&lt;PlayEnum&gt; VALUES = List.of(values());</span>
+<span class="fc" id="L12">    private static final int SIZE = VALUES.size();</span>
+<span class="fc" id="L13">    private static final Random RANDOM = new Random();</span>
+
+    public static PlayEnum randomPlay() {
+<span class="nc" id="L16">        return VALUES.get(RANDOM.nextInt(SIZE));</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

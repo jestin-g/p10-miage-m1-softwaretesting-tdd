@@ -19,5 +19,28 @@ public class RockPaperScissor {
         }
 <span class="fc" id="L20">        return ResultEnum.LOOSE;</span>
     }
+
+    ResultEnum game(Player p1, Player p2) {
+<span class="fc" id="L24">        PlayEnum moveP1 = p1.getNextMove();</span>
+<span class="fc" id="L25">        PlayEnum moveP2 = p2.getNextMove();</span>
+<span class="pc bpc" id="L26" title="1 of 4 branches missed.">        while ((moveP1 != null) &amp;&amp; (moveP2 != null)) {</span>
+<span class="fc" id="L27">            ResultEnum r = play(moveP1, moveP2);</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (r == ResultEnum.WIN) {</span>
+<span class="fc" id="L29">                p1.setScore(p1.getScore() + 1);</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">            } else if (r == ResultEnum.LOOSE) {</span>
+<span class="fc" id="L31">                p2.setScore(p2.getScore() + 1);</span>
+            } else {
+<span class="fc" id="L33">                p1.setScore(p1.getScore() + 1);</span>
+<span class="fc" id="L34">                p2.setScore(p2.getScore() + 1);</span>
+            }
+<span class="fc" id="L36">            moveP1 = p1.getNextMove();</span>
+<span class="fc" id="L37">            moveP2 = p2.getNextMove();</span>
+<span class="fc" id="L38">        }</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (p1.getScore() == p2.getScore())</span>
+<span class="fc" id="L40">            return ResultEnum.TIE;</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (p1.getScore() &lt; p2.getScore())</span>
+<span class="fc" id="L42">            return ResultEnum.LOOSE;</span>
+<span class="fc" id="L43">        return ResultEnum.WIN;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
