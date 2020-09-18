@@ -35,7 +35,7 @@ public class Player {
 
     public PlayEnum getNextMove() {
         try {
-            return this.moves.get(++this.movesCursor);
+            return this.moves.get(this.movesCursor++);
         } catch (Exception e) {
             return null;
         }
