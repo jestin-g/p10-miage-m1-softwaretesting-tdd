@@ -36,9 +36,10 @@ public class RockPaperScissor {
             moveP1 = p1.getNextMove();
             moveP2 = p2.getNextMove();
         }
-        if (p1.getScore() == p2.getScore()) {
+        if (p1.getScore() == p2.getScore())
             return ResultEnum.TIE;
-        }
+        if (p1.getScore() < p2.getScore())
+            return ResultEnum.LOOSE;
         return ResultEnum.WIN;
     }
 }
