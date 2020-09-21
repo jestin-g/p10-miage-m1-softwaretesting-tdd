@@ -38,7 +38,7 @@ public class RockPaperScissorTest {
         movesP3.add(PlayEnum.ROCK);
         movesP3.add(PlayEnum.ROCK);
         movesP3.add(PlayEnum.PAPER);
-        movesP1.add(PlayEnum.SCISSORS);
+        movesP3.add(PlayEnum.SCISSORS);
 
         LinkedList<PlayEnum> movesP4 = new LinkedList<>();
         movesP4.add(PlayEnum.PAPER);
